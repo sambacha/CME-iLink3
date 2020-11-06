@@ -1,0 +1,33 @@
+default namespace = ""
+
+start =
+  element configuration {
+    attribute environment { xsd:NCName },
+    attribute updated { text },
+    element channel {
+      attribute id { xsd:integer },
+      attribute label { text },
+      element products {
+        element product {
+          attribute code { xsd:NMTOKEN },
+          element group {
+            attribute code { text }
+          }
+        }*
+      },
+      element connections {
+        element connection {
+          attribute id { xsd:NMTOKEN },
+          element type {
+            attribute feed-type { xsd:NCName },
+            text
+          },
+          element protocol { text },
+          element ip { xsd:NMTOKEN }?,
+          element host-ip { xsd:NMTOKEN }+,
+          element port { xsd:integer },
+          element feed { xsd:NCName }
+        }+
+      }
+    }+
+  }

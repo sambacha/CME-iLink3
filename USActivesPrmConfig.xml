@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration environment="PROD" updated="2020/06/03-08:39:34">
+  <channel id="490" label="US Actives CME MDP Premium">
+    <products>
+      <product code="UB10">
+        <group code="USBD"/>
+      </product>
+      <product code="UB30">
+        <group code="USBD"/>
+      </product>
+      <product code="UB20">
+        <group code="USBD"/>
+      </product>
+      <product code="U10:20">
+        <group code="USSY"/>
+      </product>
+      <product code="UB02">
+        <group code="USBD"/>
+      </product>
+      <product code="UB2:30">
+        <group code="USSY"/>
+      </product>
+      <product code="UB2:10">
+        <group code="USSY"/>
+      </product>
+      <product code="UB2:20">
+        <group code="USSY"/>
+      </product>
+      <product code="UB05">
+        <group code="USBD"/>
+      </product>
+      <product code="UB5:10">
+        <group code="USSY"/>
+      </product>
+      <product code="UB5:30">
+        <group code="USSY"/>
+      </product>
+      <product code="UB2:05">
+        <group code="USSY"/>
+      </product>
+      <product code="UB5:20">
+        <group code="USSY"/>
+      </product>
+      <product code="UB7:30">
+        <group code="USSY"/>
+      </product>
+      <product code="UB03">
+        <group code="USBD"/>
+      </product>
+      <product code="#UB03">
+        <group code="$USBD"/>
+      </product>
+      <product code="UB3:10">
+        <group code="USSY"/>
+      </product>
+      <product code="UB3:20">
+        <group code="USSY"/>
+      </product>
+      <product code="UB3:30">
+        <group code="USSY"/>
+      </product>
+      <product code="UB2:03">
+        <group code="USSY"/>
+      </product>
+      <product code="UB3:05">
+        <group code="USSY"/>
+      </product>
+    </products>
+   <connections>
+    <connection id="490H2A">
+      <type feed-type="H">Historical Replay</type>
+      <protocol>TCP/IP</protocol>
+      <ip>164.74.4.12</ip>
+      <dr-ip>205.209.209.12</dr-ip>
+      <port>9051</port>
+      <dr-port>9051</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="490IA">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.1</ip>
+      <dr-ip>233.72.196.8</dr-ip>
+      <host-ip>164.74.8.20</host-ip>
+      <host-ip>164.74.8.21</host-ip>
+      <dr-host-ip>205.209.208.16</dr-host-ip>
+      <dr-host-ip>205.209.208.17</dr-host-ip>
+      <port>14490</port>
+      <dr-port>14490</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="490IB">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.64</ip>
+      <dr-ip>233.72.196.72</dr-ip>
+      <host-ip>164.74.9.20</host-ip>
+      <host-ip>164.74.9.21</host-ip>
+      <dr-host-ip>205.209.208.144</dr-host-ip>
+      <dr-host-ip>205.209.208.145</dr-host-ip>
+      <port>15490</port>
+      <dr-port>15490</dr-port>
+      <feed>B</feed>
+    </connection>
+    <connection id="490NA">
+      <type feed-type="N">Instrument Replay</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.4</ip>
+      <dr-ip>233.72.196.11</dr-ip>
+      <host-ip>164.74.10.27</host-ip>
+      <host-ip>164.74.10.28</host-ip>
+      <dr-host-ip>205.209.210.20</dr-host-ip>
+      <dr-host-ip>205.209.210.21</dr-host-ip>
+      <port>14490</port>
+      <dr-port>14490</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="490NB">
+      <type feed-type="B">Instrument Replay</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.67</ip>
+      <dr-ip>233.72.196.75</dr-ip>
+      <host-ip>164.74.11.27</host-ip>
+      <host-ip>164.74.11.28</host-ip>
+      <dr-host-ip>205.209.210.148</dr-host-ip>
+      <dr-host-ip>205.209.210.149</dr-host-ip>
+      <port>15490</port>
+      <dr-port>15490</dr-port>
+      <feed>B</feed>
+    </connection>
+    <connection id="490SA">
+      <type feed-type="S">Snapshot</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.3</ip>
+      <dr-ip>233.72.196.10</dr-ip>
+      <host-ip>164.74.10.23</host-ip>
+      <host-ip>164.74.10.24</host-ip>
+      <dr-host-ip>205.209.210.16</dr-host-ip>
+      <dr-host-ip>205.209.210.17</dr-host-ip>
+      <port>14490</port>
+      <dr-port>14490</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="490SB">
+      <type feed-type="S">Snapshot</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.66</ip>
+      <dr-ip>233.72.196.74</dr-ip>
+      <host-ip>164.74.11.23</host-ip>
+      <host-ip>164.74.11.24</host-ip>
+      <dr-host-ip>205.209.210.144</dr-host-ip>
+      <dr-host-ip>205.209.210.145</dr-host-ip>
+      <port>15490</port>
+      <dr-port>15490</dr-port>
+      <feed>B</feed>
+    </connection>
+    <connection id="490SAMBO">
+      <type feed-type="SMBO">Snapshot-MBO</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.2</ip>
+      <dr-ip>233.72.196.8</dr-ip>
+      <host-ip>164.74.10.23</host-ip>
+      <host-ip>164.74.10.24</host-ip>
+      <dr-host-ip>205.209.210.16</dr-host-ip>
+      <dr-host-ip>205.209.210.17</dr-host-ip>
+      <port>14490</port>
+      <dr-port>14490</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="490SBMBO">
+      <type feed-type="SMBO">Snapshot-MBO</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.65</ip>
+      <dr-ip>233.72.196.73</dr-ip>
+      <host-ip>164.74.11.23</host-ip>
+      <host-ip>164.74.11.24</host-ip>
+      <dr-host-ip>205.209.210.144</dr-host-ip>
+      <dr-host-ip>205.209.210.145</dr-host-ip>
+      <port>15490</port>
+      <dr-port>15490</dr-port>
+      <feed>B</feed>
+    </connection>
+   </connections>
+  </channel>
+</configuration>

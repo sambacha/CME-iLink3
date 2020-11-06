@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration environment="Production" updated="Thu Nov  5 18:00:05 2020 CST">
+  <marketsegment id="70" label="CME Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.152</host-ip-1>
+    <host-ip-2>205.209.216.152</host-ip-2>
+  </marketsegment>
+  <marketsegment id="72" label="CBOT and CME Equity Options no SandP">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.151</host-ip-1>
+    <host-ip-2>205.209.218.151</host-ip-2>
+  </marketsegment>
+  <marketsegment id="60" label="CBOT and CME Commodity Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.165</host-ip-1>
+    <host-ip-2>205.209.218.165</host-ip-2>
+  </marketsegment>
+  <marketsegment id="74" label="KRX Futures; BMD Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.161</host-ip-1>
+    <host-ip-2>205.209.218.161</host-ip-2>
+  </marketsegment>
+  <marketsegment id="52" label="CME Globex FX Futures and Options II">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.156</host-ip-1>
+    <host-ip-2>205.209.216.156</host-ip-2>
+  </marketsegment>
+  <marketsegment id="64" label="CME E-mini S&amp;P 500 Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.164</host-ip-1>
+    <host-ip-2>205.209.216.164</host-ip-2>
+  </marketsegment>
+  <marketsegment id="68" label="CBOT and CME Equity Futures excluding E-mini S&amp;P">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.166</host-ip-1>
+    <host-ip-2>205.209.216.166</host-ip-2>
+  </marketsegment>
+  <marketsegment id="54" label="CME SandP Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.148</host-ip-1>
+    <host-ip-2>205.209.216.148</host-ip-2>
+  </marketsegment>
+  <marketsegment id="50" label="CME Eurodollar Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.162</host-ip-1>
+    <host-ip-2>205.209.216.162</host-ip-2>
+  </marketsegment>
+  <marketsegment id="40" label="BrokerTec US Treasury Actives">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>164.74.4.18</host-ip-1>
+    <host-ip-2>164.74.4.19</host-ip-2>
+  </marketsegment>
+  <marketsegment id="44" label="BrokerTec EGB and UK Gilts">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>164.74.44.16</host-ip-1>
+    <host-ip-2>164.74.44.17</host-ip-2>
+  </marketsegment>
+  <marketsegment id="58" label="CBOT Treasury Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.157</host-ip-1>
+    <host-ip-2>205.209.218.157</host-ip-2>
+  </marketsegment>
+  <marketsegment id="42" label="BrokerTec US Repo and TBAs">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>164.74.4.20</host-ip-1>
+    <host-ip-2>164.74.4.21</host-ip-2>
+  </marketsegment>
+  <marketsegment id="46" label="BrokerTec EU Repo">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>164.74.44.18</host-ip-1>
+    <host-ip-2>164.74.44.19</host-ip-2>
+  </marketsegment>
+  <marketsegment id="88" label="CME Globex FX Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.154</host-ip-1>
+    <host-ip-2>205.209.216.154</host-ip-2>
+  </marketsegment>
+  <marketsegment id="82" label="CME Eurodollar Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.146</host-ip-1>
+    <host-ip-2>205.209.216.146</host-ip-2>
+  </marketsegment>
+  <marketsegment id="84" label="CBOT Treasury Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.167</host-ip-1>
+    <host-ip-2>205.209.218.167</host-ip-2>
+  </marketsegment>
+  <marketsegment id="76" label="NYMEX and COMEX Metals and Alternative Market Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.149</host-ip-1>
+    <host-ip-2>205.209.218.149</host-ip-2>
+  </marketsegment>
+  <marketsegment id="78" label="NYMEX Non-Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.163</host-ip-1>
+    <host-ip-2>205.209.218.163</host-ip-2>
+  </marketsegment>
+  <marketsegment id="80" label="NYMEX Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.158</host-ip-1>
+    <host-ip-2>205.209.216.158</host-ip-2>
+  </marketsegment>
+  <marketsegment id="56" label="NYMEX and COMEX Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.147</host-ip-1>
+    <host-ip-2>205.209.218.147</host-ip-2>
+  </marketsegment>
+</configuration>

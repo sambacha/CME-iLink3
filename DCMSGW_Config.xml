@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration environment="New Release" updated="Wed Sep  9 18:00:02 2015 CDT">
+  <marketsegment id="60" label="CBOT Commodity and Equity Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.195</host-ip-1>
+    <host-ip-2>69.50.112.194</host-ip-2>
+  </marketsegment>
+  <marketsegment id="52" label="CME FX Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.181</host-ip-1>
+    <host-ip-2>69.50.112.180</host-ip-2>
+  </marketsegment>
+  <marketsegment id="54" label="CME Equity Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.191</host-ip-1>
+    <host-ip-2>69.50.112.190</host-ip-2>
+  </marketsegment>
+  <marketsegment id="50" label="CME Eurodollar Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.202</host-ip-1>
+    <host-ip-2>69.50.112.201</host-ip-2>
+  </marketsegment>
+  <marketsegment id="58" label="CBOT Treasury Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.172</host-ip-1>
+    <host-ip-2>69.50.112.171</host-ip-2>
+  </marketsegment>
+  <marketsegment id="56" label="NYMEX and COMEX Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.174</host-ip-1>
+    <host-ip-2>69.50.112.173</host-ip-2>
+  </marketsegment>
+  <marketsegment id="70" label="CME Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.183</host-ip-1>
+    <host-ip-2>69.50.112.182</host-ip-2>
+  </marketsegment>
+  <marketsegment id="72" label="CBOT Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.189</host-ip-1>
+    <host-ip-2>69.50.112.188</host-ip-2>
+  </marketsegment>
+  <marketsegment id="62" label="CME FX Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.185</host-ip-1>
+    <host-ip-2>69.50.112.184</host-ip-2>
+  </marketsegment>
+  <marketsegment id="64" label="CME E-mini S&amp;P 500 Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.177</host-ip-1>
+    <host-ip-2>69.50.112.176</host-ip-2>
+  </marketsegment>
+  <marketsegment id="88" label="CME Globex FX Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.169</host-ip-1>
+    <host-ip-2>69.50.112.175</host-ip-2>
+  </marketsegment>
+  <marketsegment id="66" label="CBOT Equity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.165</host-ip-1>
+    <host-ip-2>69.50.112.164</host-ip-2>
+  </marketsegment>
+  <marketsegment id="68" label="CME Equity Futures excluding E-mini S&amp;P">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.168</host-ip-1>
+    <host-ip-2>69.50.112.170</host-ip-2>
+  </marketsegment>
+  <marketsegment id="82" label="CME Eurodollar Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.179</host-ip-1>
+    <host-ip-2>69.50.112.178</host-ip-2>
+  </marketsegment>
+  <marketsegment id="84" label="CBOT Treasury Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.198</host-ip-1>
+    <host-ip-2>69.50.112.200</host-ip-2>
+  </marketsegment>
+  <marketsegment id="76" label="NYMEX and COMEX Metals and Alternative Market Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.204</host-ip-1>
+    <host-ip-2>69.50.112.203</host-ip-2>
+  </marketsegment>
+  <marketsegment id="78" label="NYMEX Non-Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.167</host-ip-1>
+    <host-ip-2>69.50.112.166</host-ip-2>
+  </marketsegment>
+  <marketsegment id="80" label="NYMEX Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.187</host-ip-1>
+    <host-ip-2>69.50.112.186</host-ip-2>
+  </marketsegment>
+  <marketsegment id="74" label="Hosted Partner Exchange markets and NYMEX Emissions Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.197</host-ip-1>
+    <host-ip-2>69.50.112.196</host-ip-2>
+  </marketsegment>
+  <marketsegment id="99" label="ACP">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>69.50.112.199</host-ip-1>
+    <host-ip-2>69.50.112.205</host-ip-2>
+  </marketsegment>
+</configuration>

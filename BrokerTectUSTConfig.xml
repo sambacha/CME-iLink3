@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration environment="PROD" updated="2019/08/14-08:15:44">
+  <channel id="215" label="BTEC Market Data Streamline">
+    <products/>
+   <connections>
+    <connection id="215H2A">
+      <type feed-type="H">Historical Replay</type>
+      <protocol>TCP/IP</protocol>
+      <host-ip>205.209.218.10</host-ip>
+      <host-ip>205.209.218.10</host-ip>
+      <port>9005</port>
+      <feed>A</feed>
+    </connection>
+    <connection id="215IA">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.119.160.23</ip>
+      <host-ip>69.50.115.70</host-ip>
+      <host-ip>69.50.115.69</host-ip>
+      <port>14215</port>
+      <feed>A</feed>
+    </connection>
+    <connection id="215IB">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.119.160.87</ip>
+      <host-ip>69.50.119.46</host-ip>
+      <host-ip>69.50.119.45</host-ip>
+      <port>15215</port>
+      <feed>B</feed>
+    </connection>
+   </connections>
+  </channel>
+</configuration>

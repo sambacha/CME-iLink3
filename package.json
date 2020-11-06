@@ -1,0 +1,11 @@
+{
+  "name": "cme-xml-configuration",
+  "version": "2020.10.0",
+  "description": "CME Configuration for DCMs/Brokers/DMM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CMEGroup",
+  "license": "SEE LICENSE IN LICENSE"
+}

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration environment="Production" updated="Mon Jan  2 18:00:15 2017 CST">
+  <marketsegment id="70" label="CME Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.152</host-ip-1>
+    <host-ip-2>205.209.216.152</host-ip-2>
+  </marketsegment>
+  <marketsegment id="72" label="CBOT Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.151</host-ip-1>
+    <host-ip-2>205.209.218.151</host-ip-2>
+  </marketsegment>
+  <marketsegment id="60" label="CBOT Commodity and Equity Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.165</host-ip-1>
+    <host-ip-2>205.209.218.165</host-ip-2>
+  </marketsegment>
+  <marketsegment id="74" label="Hosted Partner Exchange markets">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.161</host-ip-1>
+    <host-ip-2>205.209.218.161</host-ip-2>
+  </marketsegment>
+  <marketsegment id="62" label="CME FX Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.145</host-ip-1>
+    <host-ip-2>205.209.218.145</host-ip-2>
+  </marketsegment>
+  <marketsegment id="52" label="CME FX Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.156</host-ip-1>
+    <host-ip-2>205.209.216.156</host-ip-2>
+  </marketsegment>
+  <marketsegment id="64" label="CME E-mini S&amp;P 500 Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.164</host-ip-1>
+    <host-ip-2>205.209.216.164</host-ip-2>
+  </marketsegment>
+  <marketsegment id="66" label="CBOT Equity Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.153</host-ip-1>
+    <host-ip-2>205.209.218.153</host-ip-2>
+  </marketsegment>
+  <marketsegment id="68" label="CME Equity Futures excluding E-mini S&amp;P">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.166</host-ip-1>
+    <host-ip-2>205.209.216.166</host-ip-2>
+  </marketsegment>
+  <marketsegment id="54" label="CME Equity Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.148</host-ip-1>
+    <host-ip-2>205.209.216.148</host-ip-2>
+  </marketsegment>
+  <marketsegment id="50" label="CME Eurodollar Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.162</host-ip-1>
+    <host-ip-2>205.209.216.162</host-ip-2>
+  </marketsegment>
+  <marketsegment id="58" label="CBOT Treasury Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.157</host-ip-1>
+    <host-ip-2>205.209.218.157</host-ip-2>
+  </marketsegment>
+  <marketsegment id="82" label="CME Eurodollar Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.146</host-ip-1>
+    <host-ip-2>205.209.216.146</host-ip-2>
+  </marketsegment>
+  <marketsegment id="84" label="CBOT Treasury Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.167</host-ip-1>
+    <host-ip-2>205.209.218.167</host-ip-2>
+  </marketsegment>
+  <marketsegment id="86" label="CME Europe Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.150</host-ip-1>
+    <host-ip-2>205.209.216.150</host-ip-2>
+  </marketsegment>
+  <marketsegment id="76" label="NYMEX and COMEX Metals and Alternative Market Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.149</host-ip-1>
+    <host-ip-2>205.209.218.149</host-ip-2>
+  </marketsegment>
+  <marketsegment id="78" label="NYMEX Non-Crude Energy and Emissions Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.163</host-ip-1>
+    <host-ip-2>205.209.218.163</host-ip-2>
+  </marketsegment>
+  <marketsegment id="80" label="NYMEX Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.158</host-ip-1>
+    <host-ip-2>205.209.216.158</host-ip-2>
+  </marketsegment>
+  <marketsegment id="56" label="NYMEX and COMEX Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.216.147</host-ip-1>
+    <host-ip-2>205.209.218.147</host-ip-2>
+  </marketsegment>
+ <marketsegment id="88" label="CME Globex FX Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <host-ip-1>205.209.218.154</host-ip-1>
+    <host-ip-2>205.209.216.154</host-ip-2>
+  </marketsegment>
+</configuration>

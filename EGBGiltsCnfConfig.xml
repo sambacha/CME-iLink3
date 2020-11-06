@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration environment="PROD" updated="2020/06/03-08:39:34">
+  <channel id="502" label="EGBs Gilts CME MDP Conflated">
+    <products>
+      <product code="ESMBND">
+        <group code="GBIL"/>
+      </product>
+      <product code="FIBILL">
+        <group code="GBIL"/>
+      </product>
+      <product code="NLBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="ESBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="DEBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="IEBILL">
+        <group code="GBIL"/>
+      </product>
+      <product code="NLBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="#DEBND">
+        <group code="$EUBD"/>
+      </product>
+      <product code="DEBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="FIBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="XSBOND">
+        <group code="EUCA"/>
+      </product>
+      <product code="PTBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="PTBBND">
+        <group code="GBIL"/>
+      </product>
+      <product code="GRBOND">
+        <group code="GBIL"/>
+      </product>
+      <product code="ESMBIL">
+        <group code="GBIL"/>
+      </product>
+      <product code="ATCBND">
+        <group code="GBIL"/>
+      </product>
+      <product code="ITBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="ITBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="BEBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="BEBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="FRBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="FRBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="ATBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="IEBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="PTBILL">
+        <group code="EUBD"/>
+      </product>
+      <product code="SKBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="SIBOND">
+        <group code="EUBD"/>
+      </product>
+      <product code="ESBOND">
+        <group code="EUBD"/>
+      </product>
+    </products>
+   <connections>
+    <connection id="502H2A">
+      <type feed-type="H">Historical Replay</type>
+      <protocol>TCP/IP</protocol>
+      <ip>164.74.44.12</ip>
+      <dr-ip>164.74.4.12</dr-ip>
+      <port>9053</port>
+      <dr-port>9053</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="502IA">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.48</ip>
+      <dr-ip>233.72.196.56</dr-ip>
+      <host-ip>164.74.48.18</host-ip>
+      <host-ip>164.74.48.19</host-ip>
+      <dr-host-ip>164.74.8.18</dr-host-ip>
+      <dr-host-ip>164.74.8.19</dr-host-ip>
+      <port>14502</port>
+      <dr-port>14502</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="502IB">
+      <type feed-type="I">Incremental</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.112</ip>
+      <dr-ip>233.72.196.120</dr-ip>
+      <host-ip>164.74.49.18</host-ip>
+      <host-ip>164.74.49.19</host-ip>
+      <dr-host-ip>164.74.9.18</dr-host-ip>
+      <dr-host-ip>164.74.9.19</dr-host-ip>
+      <port>15502</port>
+      <dr-port>15502</dr-port>
+      <feed>B</feed>
+    </connection>
+    <connection id="502NA">
+      <type feed-type="N">Instrument Replay</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.50</ip>
+      <dr-ip>233.72.196.58</dr-ip>
+      <host-ip>164.74.50.20</host-ip>
+      <host-ip>164.74.50.21</host-ip>
+      <dr-host-ip>164.74.10.19</dr-host-ip>
+      <dr-host-ip>164.74.10.20</dr-host-ip>
+      <port>14502</port>
+      <dr-port>14502</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="502NB">
+      <type feed-type="B">Instrument Replay</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.114</ip>
+      <dr-ip>233.72.196.122</dr-ip>
+      <host-ip>164.74.51.20</host-ip>
+      <host-ip>164.74.51.21</host-ip>
+      <dr-host-ip>164.74.11.19</dr-host-ip>
+      <dr-host-ip>164.74.11.20</dr-host-ip>
+      <port>15502</port>
+      <dr-port>15502</dr-port>
+      <feed>B</feed>
+    </connection>
+    <connection id="502SA">
+      <type feed-type="S">Snapshot</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.49</ip>
+      <dr-ip>233.72.196.57</dr-ip>
+      <host-ip>164.74.50.16</host-ip>
+      <host-ip>164.74.50.17</host-ip>
+      <dr-host-ip>164.74.10.31</dr-host-ip>
+      <dr-host-ip>164.74.10.16</dr-host-ip>
+      <port>14502</port>
+      <dr-port>14502</dr-port>
+      <feed>A</feed>
+    </connection>
+    <connection id="502SB">
+      <type feed-type="S">Snapshot</type>
+      <protocol>UDP/IP</protocol>
+      <ip>233.72.196.113</ip>
+      <dr-ip>233.72.196.121</dr-ip>
+      <host-ip>164.74.51.16</host-ip>
+      <host-ip>164.74.51.17</host-ip>
+      <dr-host-ip>164.74.11.31</dr-host-ip>
+      <dr-host-ip>164.74.11.16</dr-host-ip>
+      <port>15502</port>
+      <dr-port>15502</dr-port>
+      <feed>B</feed>
+    </connection>
+   </connections>
+  </channel>
+</configuration>

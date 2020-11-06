@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration environment="Certification" updated="Wed Sep  9 18:00:02 2015 CDT">
+  <marketsegment id="99" label="ACP">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.199</primary-host-ip>
+    <backup-host-ip>69.50.112.205</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="70" label="CME Commodity Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.183</primary-host-ip>
+    <backup-host-ip>69.50.112.182</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="72" label="CBOT and CME Equity Options no SandP">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.189</primary-host-ip>
+    <backup-host-ip>69.50.112.188</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="60" label="CBOT and CME Commodity Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.195</primary-host-ip>
+    <backup-host-ip>69.50.112.194</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="74" label="KRX Futures; BMD Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.197</primary-host-ip>
+    <backup-host-ip>69.50.112.196</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="52" label="CME Globex FX Futures and Options II">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.181</primary-host-ip>
+    <backup-host-ip>69.50.112.180</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="64" label="CME E-mini S&amp;P 500 Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.177</primary-host-ip>
+    <backup-host-ip>69.50.112.176</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="68" label="CBOT and CME Equity Futures excluding E-mini S&amp;P">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.168</primary-host-ip>
+    <backup-host-ip>69.50.112.170</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="54" label="CME SandP Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.191</primary-host-ip>
+    <backup-host-ip>69.50.112.190</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="50" label="CME Eurodollar Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.202</primary-host-ip>
+    <backup-host-ip>69.50.112.201</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="58" label="CBOT Treasury Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.172</primary-host-ip>
+    <backup-host-ip>69.50.112.171</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="82" label="CME Eurodollar Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.179</primary-host-ip>
+    <backup-host-ip>69.50.112.178</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="84" label="CBOT Treasury Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.198</primary-host-ip>
+    <backup-host-ip>69.50.112.200</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="88" label="CME Globex FX Futures and Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.169</primary-host-ip>
+    <backup-host-ip>69.50.112.175</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="76" label="NYMEX and COMEX Metals and Alternative Market Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.204</primary-host-ip>
+    <backup-host-ip>69.50.112.203</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="78" label="NYMEX Non-Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.167</primary-host-ip>
+    <backup-host-ip>69.50.112.166</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="80" label="NYMEX Crude Energy Futures">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.187</primary-host-ip>
+    <backup-host-ip>69.50.112.186</backup-host-ip>
+  </marketsegment>
+  <marketsegment id="56" label="NYMEX and COMEX Options">
+    <protocol>TCP/IP</protocol>
+    <primary-host-ip>69.50.112.174</primary-host-ip>
+    <backup-host-ip>69.50.112.173</backup-host-ip>
+  </marketsegment>
+</configuration>
