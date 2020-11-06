@@ -1,0 +1,716 @@
+From cbedfd9fc1f0d5a48accf4c4e442903f993fbdf6 Mon Sep 17 00:00:00 2001
+From: Don Mendelson <donmendelson@gmail.com>
+Date: Wed, 10 Jun 2020 10:29:47 -0500
+Subject: [PATCH] Enhance the XML schema with metadata #120
+
+---
+ v2-0-RC3/doc/01Introduction.md        |   5 +-
+ v2-0-RC3/doc/04MessageSchema.md       |  26 +-
+ v2-0-RC3/resources/xml/examples.xml   |   8 +-
+ v2-0-RC3/resources/xsd/dc.xsd         | 119 ++++++++
+ v2-0-RC3/resources/xsd/dcmitype.xsd   |  53 ++++
+ v2-0-RC3/resources/xsd/dcterms.xsd    | 383 ++++++++++++++++++++++++++
+ v2-0-RC3/resources/xsd/sbe-2.0rc3.xsd |  13 +-
+ 7 files changed, 590 insertions(+), 17 deletions(-)
+ create mode 100644 v2-0-RC3/resources/xsd/dc.xsd
+ create mode 100644 v2-0-RC3/resources/xsd/dcmitype.xsd
+ create mode 100644 v2-0-RC3/resources/xsd/dcterms.xsd
+
+diff --git a/v2-0-RC3/doc/01Introduction.md b/v2-0-RC3/doc/01Introduction.md
+index 3b6fbb3..d25130f 100644
+--- a/v2-0-RC3/doc/01Introduction.md
++++ b/v2-0-RC3/doc/01Introduction.md
+@@ -189,8 +189,9 @@ Representation of dates and times
+ 8-bit single-byte coded graphic character sets -- Part 1: Latin alphabet No. 1
+ 
+ [ISO 10383:2012](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61067)
+-Securities and related financial instruments - Codes for exchanges and
+-market identification (MIC)
++Securities and related financial instruments - Codes for exchanges and market identification (MIC)
++
++[ISO 15836-1:2017](https://www.iso.org/standard/71339.html) Information and documentation — The Dublin Core metadata element set — Part 1: Core elements
+ 
+ *W3C XML Schema version 1.0* [Part 1](https://www.w3.org/TR/xmlschema-1/) [Part 2](https://www.w3.org/TR/xmlschema-2/)
+ 
+diff --git a/v2-0-RC3/doc/04MessageSchema.md b/v2-0-RC3/doc/04MessageSchema.md
+index 385561e..b420b6d 100644
+--- a/v2-0-RC3/doc/04MessageSchema.md
++++ b/v2-0-RC3/doc/04MessageSchema.md
+@@ -73,15 +73,23 @@ their encodings.
+ 
+ ### Schema versioning
+ 
+-Changes to a message schema may be tracked by its `version` attribute. A
+-version of a schema is a snapshot in time. All elements in a given
+-generation of the schema share the same version number. That is,
+-elements are not versioned individually. By convention, the initial
+-version of a schema is version zero, and subsequent changes increment
+-the version number.
+-
+-The `package` attribute should remain constant between versions, if it is
+-supplied.
++Changes to a message schema may be tracked by its `version` attribute. A version of a schema is a snapshot in time. All elements in a given generation of the schema share the same version number. That is, elements are not versioned individually. By convention, the initial version of a schema is version zero, and subsequent changes increment the version number.
++
++The `package` attribute should remain constant between versions, if it is supplied.
++
++### Metadata
++
++Optionally, an SBE message schema may be identified and described using industry standard Dublin Core metadata terms. Any of those standard terms may be contained by a `<metadata>` element. The Dublin Core XML schema is imported by the SBE XML schema to support that usage.
++
++Metadata example
++```xml
++<metadata>
++	<dcterms:publisher>FIX Trading Community</dcterms:publisher>
++	<dcterms:title>SBE example</dcterms:title>
++	<dcterms:rights>© Copyright 2014-2020 FIX Protocol Limited</dcterms:rights>
++	<dcterms:created>2020-06-10T10:07-05:00</dcterms:created>
++</metadata>
++```
+ 
+ Data encodings
+ ------------------------------------------------------------------------------------------------------------
+diff --git a/v2-0-RC3/resources/xml/examples.xml b/v2-0-RC3/resources/xml/examples.xml
+index 667ded8..2bb72b8 100644
+--- a/v2-0-RC3/resources/xml/examples.xml
++++ b/v2-0-RC3/resources/xml/examples.xml
+@@ -1,5 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+-<messageSchema xmlns="http://fixprotocol.io/2017/sbe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" package="examples" id="91" version="0" byteOrder="littleEndian" xsi:schemaLocation="http://fixprotocol.io/2017/sbe ../xsd/sbe-2.0rc3.xsd">
++<messageSchema xmlns="http://fixprotocol.io/2017/sbe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:dcterms="http://purl.org/dc/terms/" package="examples" id="91" version="0" byteOrder="littleEndian" xsi:schemaLocation="http://fixprotocol.io/2017/sbe ../xsd/sbe-2.0rc3.xsd">
++	<metadata>
++		<dcterms:publisher>FIX Trading Community</dcterms:publisher>
++		<dcterms:title>SBE example</dcterms:title>
++		<dcterms:rights>© Copyright 2014-2020 FIX Protocol Limited</dcterms:rights>
++		<dcterms:created>2020-06-10T10:07-05:00</dcterms:created>
++	</metadata>
+ 	<!-- include commonly used types -->
+ 	<xi:include href="types-include.xml"/>
+ 	<types>
+diff --git a/v2-0-RC3/resources/xsd/dc.xsd b/v2-0-RC3/resources/xsd/dc.xsd
+new file mode 100644
+index 0000000..bdd083d
+--- /dev/null
++++ b/v2-0-RC3/resources/xsd/dc.xsd
+@@ -0,0 +1,119 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
++           xmlns="http://purl.org/dc/elements/1.1/"
++           targetNamespace="http://purl.org/dc/elements/1.1/"
++           elementFormDefault="qualified"
++           attributeFormDefault="unqualified">
++
++  <xs:annotation>
++    <xs:documentation xml:lang="en">
++      DCMES 1.1 XML Schema
++      XML Schema for http://purl.org/dc/elements/1.1/ namespace
++
++      Created 2008-02-11
++
++      Created by 
++
++      Tim Cole (t-cole3@uiuc.edu)
++      Tom Habing (thabing@uiuc.edu)
++      Jane Hunter (jane@dstc.edu.au)
++      Pete Johnston (p.johnston@ukoln.ac.uk),
++      Carl Lagoze (lagoze@cs.cornell.edu)
++
++      This schema declares XML elements for the 15 DC elements from the
++      http://purl.org/dc/elements/1.1/ namespace.
++
++      It defines a complexType SimpleLiteral which permits mixed content 
++      and makes the xml:lang attribute available. It disallows child elements by
++      use of minOcccurs/maxOccurs.
++
++      However, this complexType does permit the derivation of other complexTypes
++      which would permit child elements.
++
++      All elements are declared as substitutable for the abstract element any, 
++      which means that the default type for all elements is dc:SimpleLiteral.
++
++    </xs:documentation>
++
++  </xs:annotation>
++
++
++  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
++             schemaLocation="http://www.w3.org/2001/03/xml.xsd">
++  </xs:import>
++
++  <xs:complexType name="SimpleLiteral">
++        <xs:annotation>
++        <xs:documentation xml:lang="en">
++            This is the default type for all of the DC elements.
++            It permits text content only with optional
++            xml:lang attribute.
++            Text is allowed because mixed="true", but sub-elements
++            are disallowed because minOccurs="0" and maxOccurs="0" 
++            are on the xs:any tag.
++
++    	    This complexType allows for restriction or extension permitting
++            child elements.
++    	</xs:documentation>
++  	</xs:annotation>
++
++   <xs:complexContent mixed="true">
++    <xs:restriction base="xs:anyType">
++     <xs:sequence>
++      <xs:any processContents="lax" minOccurs="0" maxOccurs="0"/>
++     </xs:sequence>
++     <xs:attribute ref="xml:lang" use="optional"/>
++    </xs:restriction>
++   </xs:complexContent>
++  </xs:complexType>
++
++  <xs:element name="any" type="SimpleLiteral" abstract="true"/>
++
++  <xs:element name="title" substitutionGroup="any"/>
++  <xs:element name="creator" substitutionGroup="any"/>
++  <xs:element name="subject" substitutionGroup="any"/>
++  <xs:element name="description" substitutionGroup="any"/>
++  <xs:element name="publisher" substitutionGroup="any"/>
++  <xs:element name="contributor" substitutionGroup="any"/>
++  <xs:element name="date" substitutionGroup="any"/>
++  <xs:element name="type" substitutionGroup="any"/>
++  <xs:element name="format" substitutionGroup="any"/>
++  <xs:element name="identifier" substitutionGroup="any"/>
++  <xs:element name="source" substitutionGroup="any"/>
++  <xs:element name="language" substitutionGroup="any"/>
++  <xs:element name="relation" substitutionGroup="any"/>
++  <xs:element name="coverage" substitutionGroup="any"/>
++  <xs:element name="rights" substitutionGroup="any"/>
++
++  <xs:group name="elementsGroup">
++  	<xs:annotation>
++    	<xs:documentation xml:lang="en">
++    	    This group is included as a convenience for schema authors
++            who need to refer to all the elements in the 
++            http://purl.org/dc/elements/1.1/ namespace.
++    	</xs:documentation>
++  	</xs:annotation>
++
++  <xs:sequence>
++    <xs:choice minOccurs="0" maxOccurs="unbounded">
++      <xs:element ref="any"/>
++    </xs:choice>
++    </xs:sequence>
++  </xs:group>
++
++  <xs:complexType name="elementContainer">
++  	<xs:annotation>
++    	<xs:documentation xml:lang="en">
++    		This complexType is included as a convenience for schema authors who need to define a root
++    		or container element for all of the DC elements.
++    	</xs:documentation>
++  	</xs:annotation>
++
++    <xs:choice>
++      <xs:group ref="elementsGroup"/>
++    </xs:choice>
++  </xs:complexType>
++
++
++</xs:schema>
++<!--#include virtual="/schemas/xmls/qdc/2008/02/11/dc.xsd" -->
+\ No newline at end of file
+diff --git a/v2-0-RC3/resources/xsd/dcmitype.xsd b/v2-0-RC3/resources/xsd/dcmitype.xsd
+new file mode 100644
+index 0000000..9a9f046
+--- /dev/null
++++ b/v2-0-RC3/resources/xsd/dcmitype.xsd
+@@ -0,0 +1,53 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
++           xmlns="http://purl.org/dc/dcmitype/"
++           targetNamespace="http://purl.org/dc/dcmitype/"
++           elementFormDefault="qualified"
++           attributeFormDefault="unqualified">
++
++  <xs:annotation>
++    <xs:documentation xml:lang="en">
++      DCMI Type Vocabulary XML Schema
++      XML Schema for http://purl.org/dc/dcmitype/ namespace
++
++      Created 2008-02-11
++
++      Created by 
++
++      Tim Cole (t-cole3@uiuc.edu)
++      Tom Habing (thabing@uiuc.edu)
++      Jane Hunter (jane@dstc.edu.au)
++      Pete Johnston (p.johnston@ukoln.ac.uk),
++      Carl Lagoze (lagoze@cs.cornell.edu)
++
++      This schema defines a simpleType which enumerates
++      the allowable values for the DCMI Type Vocabulary.
++    </xs:documentation>
++
++ 
++  </xs:annotation>
++
++
++  <xs:simpleType name="DCMIType">
++     <xs:union>
++        <xs:simpleType>
++           <xs:restriction base="xs:Name">
++		<xs:enumeration value="Collection"/>
++		<xs:enumeration value="Dataset"/>
++		<xs:enumeration value="Event"/>
++		<xs:enumeration value="Image"/>
++		<xs:enumeration value="MovingImage"/>
++		<xs:enumeration value="StillImage"/>
++		<xs:enumeration value="InteractiveResource"/>
++		<xs:enumeration value="Service"/>
++		<xs:enumeration value="Software"/>
++		<xs:enumeration value="Sound"/>
++		<xs:enumeration value="Text"/>
++		<xs:enumeration value="PhysicalObject"/>
++            </xs:restriction>
++        </xs:simpleType> 
++     </xs:union>
++  </xs:simpleType>
++
++</xs:schema>
++<!--#include virtual="/schemas/xmls/qdc/2008/02/11/dcmitype.xsd" -->
+\ No newline at end of file
+diff --git a/v2-0-RC3/resources/xsd/dcterms.xsd b/v2-0-RC3/resources/xsd/dcterms.xsd
+new file mode 100644
+index 0000000..7f6f1c7
+--- /dev/null
++++ b/v2-0-RC3/resources/xsd/dcterms.xsd
+@@ -0,0 +1,383 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
++           xmlns:dc="http://purl.org/dc/elements/1.1/"
++           xmlns:dcmitype="http://purl.org/dc/dcmitype/"
++           targetNamespace="http://purl.org/dc/terms/"
++           xmlns="http://purl.org/dc/terms/"
++           elementFormDefault="qualified"
++           attributeFormDefault="unqualified">
++
++  <xs:annotation>
++    <xs:documentation xml:lang="en">
++      DCterms XML Schema
++      XML Schema for http://purl.org/dc/terms/ namespace
++ 
++      Created 2008-02-11
++
++      Created by 
++
++      Tim Cole (t-cole3@uiuc.edu)
++      Tom Habing (thabing@uiuc.edu)
++      Jane Hunter (jane@dstc.edu.au)
++      Pete Johnston (p.johnston@ukoln.ac.uk),
++      Carl Lagoze (lagoze@cs.cornell.edu)
++
++      This schema declares XML elements for the DC elements and
++      DC element refinements from the http://purl.org/dc/terms/ namespace.
++      
++      It reuses the complexType dc:SimpleLiteral, imported from the dc.xsd
++      schema, which permits simple element content, and makes the xml:lang
++      attribute available.
++
++      This complexType permits the derivation of other complexTypes
++      which would permit child elements.
++
++      XML elements corresponding to DC elements are declared as substitutable for the abstract element dc:any, and 
++      XML elements corresponding to DC element refinements are defined as substitutable for the base elements 
++      which they refine.
++
++      This means that the default type for all XML elements (i.e. corresponding to all DC elements and 
++      element refinements) is dc:SimpleLiteral.
++
++      Encoding schemes are defined as complexTypes which are restrictions
++      of the dc:SimpleLiteral complexType. These complexTypes restrict 
++      values to an appropriates syntax or format using data typing,
++      regular expressions, or enumerated lists.
++  
++      In order to specify one of these encodings an xsi:type attribute must 
++      be used in the instance document.
++
++      Also, note that one shortcoming of this approach is that any type can be 
++      applied to any of the elements or refinements.  There is no convenient way
++      to restrict types to specific elements using this approach.
++
++      Changes in 2008-02-11 version:
++      
++      Add element declarations corresponding to 15 new dcterms URIs, and amend use of substitutionGroups.
++      
++      Add compexType definitions corresponding to ISO639-3, RFC4646.
++      
++    </xs:documentation>
++
++  </xs:annotation>
++
++
++  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
++             schemaLocation="http://www.w3.org/2001/03/xml.xsd">
++  </xs:import>
++
++   <xs:import namespace="http://purl.org/dc/elements/1.1/"
++              schemaLocation="dc.xsd"/>
++
++   <xs:import namespace="http://purl.org/dc/dcmitype/"
++              schemaLocation="dcmitype.xsd"/>
++
++   <xs:element name="title" substitutionGroup="dc:title"/>
++   <xs:element name="creator" substitutionGroup="dc:creator"/>
++   <xs:element name="subject" substitutionGroup="dc:subject"/>
++   <xs:element name="description" substitutionGroup="dc:description"/>
++   <xs:element name="publisher" substitutionGroup="dc:publisher"/>
++   <xs:element name="contributor" substitutionGroup="dc:contributor"/>
++   <xs:element name="date" substitutionGroup="dc:date"/>
++   <xs:element name="type" substitutionGroup="dc:type"/>
++   <xs:element name="format" substitutionGroup="dc:format"/>
++   <xs:element name="identifier" substitutionGroup="dc:identifier"/>
++   <xs:element name="source" substitutionGroup="dc:source"/>
++   <xs:element name="language" substitutionGroup="dc:language"/>
++   <xs:element name="relation" substitutionGroup="dc:relation"/>
++   <xs:element name="coverage" substitutionGroup="dc:coverage"/>
++   <xs:element name="rights" substitutionGroup="dc:rights"/>
++
++   <xs:element name="alternative" substitutionGroup="title"/>
++
++   <xs:element name="tableOfContents" substitutionGroup="description"/>
++   <xs:element name="abstract" substitutionGroup="description"/>
++
++   <xs:element name="created" substitutionGroup="date"/>
++   <xs:element name="valid" substitutionGroup="date"/>
++   <xs:element name="available" substitutionGroup="date"/>
++   <xs:element name="issued" substitutionGroup="date"/>
++   <xs:element name="modified" substitutionGroup="date"/>
++   <xs:element name="dateAccepted" substitutionGroup="date"/>
++   <xs:element name="dateCopyrighted" substitutionGroup="date"/>
++   <xs:element name="dateSubmitted" substitutionGroup="date"/>
++
++   <xs:element name="extent" substitutionGroup="format"/>
++   <xs:element name="medium" substitutionGroup="format"/>
++
++   <xs:element name="isVersionOf" substitutionGroup="relation"/>
++   <xs:element name="hasVersion" substitutionGroup="relation"/>
++   <xs:element name="isReplacedBy" substitutionGroup="relation"/>
++   <xs:element name="replaces" substitutionGroup="relation"/>
++   <xs:element name="isRequiredBy" substitutionGroup="relation"/>
++   <xs:element name="requires" substitutionGroup="relation"/>
++   <xs:element name="isPartOf" substitutionGroup="relation"/>
++   <xs:element name="hasPart" substitutionGroup="relation"/>
++   <xs:element name="isReferencedBy" substitutionGroup="relation"/>
++   <xs:element name="references" substitutionGroup="relation"/>
++   <xs:element name="isFormatOf" substitutionGroup="relation"/>
++   <xs:element name="hasFormat" substitutionGroup="relation"/>
++   <xs:element name="conformsTo" substitutionGroup="relation"/>
++
++   <xs:element name="spatial" substitutionGroup="coverage"/>
++   <xs:element name="temporal" substitutionGroup="coverage"/>
++
++   <xs:element name="audience" substitutionGroup="dc:any"/>
++   <xs:element name="accrualMethod" substitutionGroup="dc:any"/>
++   <xs:element name="accrualPeriodicity" substitutionGroup="dc:any"/>
++   <xs:element name="accrualPolicy" substitutionGroup="dc:any"/>
++   <xs:element name="instructionalMethod" substitutionGroup="dc:any"/>
++   <xs:element name="provenance" substitutionGroup="dc:any"/>
++   <xs:element name="rightsHolder" substitutionGroup="dc:any"/>
++
++   <xs:element name="mediator" substitutionGroup="audience"/>
++   <xs:element name="educationLevel" substitutionGroup="audience"/>
++
++   <xs:element name="accessRights" substitutionGroup="rights"/>
++   <xs:element name="license" substitutionGroup="rights"/>
++
++   <xs:element name="bibliographicCitation" substitutionGroup="identifier"/>
++
++  <xs:complexType name="LCSH">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="MESH">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="DDC">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="LCC">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="UDC">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="Period">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="W3CDTF">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++           <xs:union memberTypes="xs:gYear xs:gYearMonth xs:date xs:dateTime"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType> 
++
++  <xs:complexType name="DCMIType">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="dcmitype:DCMIType"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="IMT">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="URI">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:anyURI"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType> 
++
++  <xs:complexType name="ISO639-2">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="ISO639-3">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="RFC1766">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:language"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="RFC3066">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:language"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="RFC4646">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:language"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="Point">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="ISO3166">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="Box">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:complexType name="TGN">
++   <xs:simpleContent>
++    <xs:restriction base="dc:SimpleLiteral">
++        <xs:simpleType>
++          <xs:restriction base="xs:string"/>
++        </xs:simpleType>
++        <xs:attribute ref="xml:lang" use="prohibited"/>
++    </xs:restriction>
++   </xs:simpleContent>
++  </xs:complexType>
++
++  <xs:group name="elementsAndRefinementsGroup">
++  	<xs:annotation>
++    	<xs:documentation xml:lang="en">
++    		This group is included as a convenience for schema authors
++            who need to refer to all the DC elements and element refinements 
++            in the http://purl.org/dc/elements/1.1/ and 
++            http://purl.org/dc/terms namespaces. 
++            N.B. Refinements available via substitution groups.
++    	</xs:documentation>
++  	</xs:annotation>
++
++  <xs:sequence>
++    <xs:choice minOccurs="0" maxOccurs="unbounded">
++	<xs:element ref="dc:any" />
++    </xs:choice>
++  </xs:sequence>
++  </xs:group>	
++
++  <xs:complexType name="elementOrRefinementContainer">
++  	<xs:annotation>
++    	<xs:documentation xml:lang="en">
++    		This is included as a convenience for schema authors who need to define a root
++    		or container element for all of the DC elements and element refinements.
++    	</xs:documentation>
++  	</xs:annotation>
++
++    <xs:choice>
++      <xs:group ref="elementsAndRefinementsGroup"/>
++    </xs:choice>
++  </xs:complexType>
++
++
++</xs:schema>
++<!--#include virtual="/schemas/xmls/qdc/2008/02/11/dcterms.xsd" -->
+diff --git a/v2-0-RC3/resources/xsd/sbe-2.0rc3.xsd b/v2-0-RC3/resources/xsd/sbe-2.0rc3.xsd
+index e02cf7e..db3e62d 100644
+--- a/v2-0-RC3/resources/xsd/sbe-2.0rc3.xsd
++++ b/v2-0-RC3/resources/xsd/sbe-2.0rc3.xsd
+@@ -1,15 +1,17 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<xs:schema xmlns:sbe="http://fixprotocol.io/2017/sbe" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fixprotocol.io/2017/sbe" elementFormDefault="qualified" version="2.0RC3">
++<xs:schema xmlns:sbe="http://fixprotocol.io/2017/sbe" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fixprotocol.io/2017/sbe" xmlns:dcterms="http://purl.org/dc/terms/" elementFormDefault="qualified" version="2.0RC3">
+ 	<xs:annotation>
+ 		<xs:documentation>
+ 			Message schema for FIX Simple Binary Encoding
+ 			*Namespace is tentative.*
+-			Version: 2.0 RC2
+-			© Copyright 2014-2019 FIX Protocol Limited
++			Version: 2.0 RC3
++			© Copyright 2014-2020 FIX Protocol Limited
+ 			License: Creative Commons Attribution-NoDerivatives 4.0 International Public License
+ 		</xs:documentation>
+ 	</xs:annotation>
+ 	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
++	<xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
++
+ 	<!-- Elements -->
+ 	<xs:element name="messageSchema">
+ 		<xs:annotation>
+@@ -20,6 +22,7 @@
+ 		</xs:annotation>
+ 		<xs:complexType>
+ 			<xs:sequence>
++				<xs:element name="metadata" type="dcterms:elementOrRefinementContainer" minOccurs="0"/>
+ 				<xs:element ref="sbe:types" maxOccurs="unbounded"/>
+ 				<xs:element ref="sbe:messages" maxOccurs="unbounded"/>
+ 			</xs:sequence>
+@@ -81,8 +84,8 @@
+ 					<xs:documentation>Overrides the messageSchema package</xs:documentation>
+ 				</xs:annotation>
+ 			</xs:attribute>
+-			<!-- required to support XInclude -->
+ 			<xs:attribute ref="xml:base"/>
++			<!-- required to support XInclude -->
+ 		</xs:complexType>
+ 	</xs:element>
+ 	<xs:element name="types">
+@@ -107,8 +110,8 @@
+ 					<xs:documentation>Overrides the messageSchema package</xs:documentation>
+ 				</xs:annotation>
+ 			</xs:attribute>
+-			<!-- required to support XInclude -->
+ 			<xs:attribute ref="xml:base"/>
++			<!-- required to support XInclude -->
+ 		</xs:complexType>
+ 	</xs:element>
+ 	<!-- Complex types -->
